@@ -1,0 +1,5 @@
+nav_items: 
+  - {label: 'Home', path: '/'}
+  - {label: 'Current Items', path: '/products/'}
+  - {label: 'Previous Auctions', path: '/news'}
+  - {label: 'Bidding', path: '/bidding'}

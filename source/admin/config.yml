@@ -1,0 +1,73 @@
+backend:
+  name: git-gateway
+
+media_folder: source/images/uploads
+public_folder: /images/uploads
+
+onEvent: node "/admin/cms.js"
+
+
+collections:
+
+  - name: buyitnow
+    label: Buy It Now
+    format: yml
+    extension: yml
+    folder: data/buyitnow/
+    create: true
+    slug: '{{title}}'
+    fields:
+      - {label: Title, name: title, widget: string, required: true}
+      - {label: Image, name: image, widget: image, required: true}
+      - {label: Description, name: description, widget: string}
+      - {label: Price, name: price, widget: number, required: true}
+      - {label: Paypal Button, name: paypal, widget: string, required: true}
+
+  #yaml middleman data example
+  - name: product
+    label: Label
+    format: yml
+    extension: yml
+    folder: data/products/
+    create: true
+    slug: '{{title}}'
+    fields:
+      - {label: Title, name: title, widget: string, required: true}
+      - {label: Publish Date, name: date, widget: datetime}
+      - {label: Image, name: image, widget: image, required: true}
+
+      - {label: Lot , name: weight, widget: number}
+      - {label: Current Price, name: price, widget: number}
+      - {label: Body, name: body, widget: markdown}
+
+#markdown middleman blog example
+  - name: blog
+    label: Previous Auctions
+    folder: source/posts/
+    extension: .html.md
+    format: frontmatter
+    create: true
+    slug: '{{title}}'
+    fields:
+      - {label: Title, name: title, widget: string, required: true}
+      - {label: Publish Date, name: date, widget: datetime}
+      - {label: Description, name: description, widget: string}
+      - {label: Image, name: image, widget: image}
+      - {label: Body, name: body, widget: markdown}
+
+  - name: pages
+    label: Pages
+    files:
+      - file: "data/pages/home.yml"
+        label: Homepage
+        name: home
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - {label: Title, name: title, widget: string}
+              - {label: Image, name: image, widget: image}
+          - label: Story
+            name: story
+            widget: markdown
